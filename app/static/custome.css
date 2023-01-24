@@ -15,20 +15,46 @@ body {
 
 #footer {
     position: relative;
-    margin-top: -72px;
+    margin-top: -59px;
     /* negative value of footer height */
-    height: 72px;
+    height: 59px;
     clear: both;
+    background-color: #9bc2be !important;
+    color: #f37979;
+    font-size: 18px !important;
+    font-weight: bold !important;
 }
 
 
 /* navbar settings */
 .bg-primary {
     /*background-color: #601430!important; */
-    background-color: #002B4D!important;
+    background-color: #9bc2be!important;
+}
+
+.nav-link {
+    font-size: 17px !important;
+    font-weight: bold !important;
+    color: #f37979 !important;
+}
+.navbar {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+.navbar-brand{
+    padding-bottom: 0 !important;
+}
+.navbar-brand-img{
+    height: 80px;
+    width: 80px;
 }
 
 .container-background {
     background-color: #FFFFFF;
+}
+
+.container{
+    padding-top: 20px;
+    height: 100%;
 }
 
