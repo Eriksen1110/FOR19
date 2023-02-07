@@ -36,7 +36,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <!-- Navbar items, iteriate trough the navigation_bar list-->
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               {% for href, id, caption in navigation_bar %}
               <li 
@@ -53,10 +53,10 @@
         </div>
       </nav>
 
-      <div class="container" >
+      
         {% block content %}
         {% endblock %}
-      </div>
+      
 
 	  </div> 
   </div>

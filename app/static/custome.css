@@ -15,9 +15,9 @@ body {
 
 #footer {
     position: relative;
-    margin-top: -59px;
+    margin-top: -72px;
     /* negative value of footer height */
-    height: 59px;
+    height: 72px;
     clear: both;
     background-color: #9bc2be !important;
     color: #f37979;
@@ -33,7 +33,7 @@ body {
 }
 
 .nav-link {
-    font-size: 17px !important;
+    font-size: 22px !important;
     font-weight: bold !important;
     color: #f37979 !important;
 }
@@ -48,13 +48,85 @@ body {
     height: 80px;
     width: 80px;
 }
+.nav-item :hover {
+    background-color: #9bb2c2 ;
+    border-radius: 10px;
+}
 
 .container-background {
     background-color: #FFFFFF;
 }
 
 .container{
-    padding-top: 20px;
     height: 100%;
+}
+
+/* Section header_home */
+.section_header_home {
+    background-color: #9bb2c2;
+}
+.header_home{
+    display: flex;
+}
+.header_home .box {
+    flex: 1;
+    color: #fff;
+    margin: 20px 10px;  
+    padding: 15px 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.home .text{
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: -15px;
+}
+
+.header_home .box:nth-of-type(1) {
+    flex-grow: 2;
+}
+.header_home .box:nth-of-type(2) {
+    flex-grow: 1;
+}
+.text_align_left{
+    text-align: left;
+}
+
+/* Developers */
+.section_developers {
+    background-color: #C0D1DA;
+}
+
+.developers {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
+}
+
+.d_team{
+    display: block;
+}
+
+.developers .box {
+    background-color: #798F9B;
+    color: black;
+    border-radius: 10px;
+    margin: 20px 10px;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.btn_developers{
+    background-color: #C0D1DA;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+@media(max-width:768px){
+.header_home{
+    flex-direction: column;
+}
+
 }
 
