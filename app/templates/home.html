@@ -49,9 +49,20 @@
         </p>
       </div>
       <div class="developers">
+        {% set dev_team = [
+          ("Christian", '5', 'men'), 
+          ('Sara', '8', 'women'), 
+          ('Richard', '7', 'men'),
+          ('Per Ole', '10', 'men'),
+          ('Jon', '4', 'men'),
+          ('Carl-Oscar', '3', 'men'),
+          ('Martin', '1', 'men')] 
+          -%}
+
+        {% for name, n, gender in dev_team %}
         <div class="box">
-            <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="" style="border-radius: 50%; width:200px;">
-          <h3> Christian Eriksen</h3>
+            <img src="https://randomuser.me/api/portraits/{{ gender|e}}/{{ n|e }}.jpg" alt="" style="border-radius: 50%; width:200px;">
+          <h3> {{ name }}</h3>
           <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae temporibus repellendus eos nemo voluptas ducimus repudiandae esse possimus, a maxime sed quod iste minima quis!</p>
           <div class="container_buttons_developers">
             <a class="btn_developers" href="#">
@@ -59,68 +70,8 @@
             </a>
           </div>
         </div>
-        <div class="box">
-          <img src="https://randomuser.me/api/portraits/women/9.jpg" alt="" style="border-radius: 50%; width:200px;">
-          <h3> Sara Birkeland</h3>
-          <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae temporibus repellendus eos nemo voluptas ducimus repudiandae esse possimus, a maxime sed quod iste minima quis!</p>
-          <div class="container_buttons_developers">
-            <a class="btn_developers" href="#">
-              Curriculum
-            </a>
-          </div>
-        </div>
-        <div class="box">
-            <img src="https://randomuser.me/api/portraits/men/8.jpg" alt="" style="border-radius: 50%; width:200px;">
-          <h3> Per Ole Lande</h3>
-          <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae temporibus repellendus eos nemo voluptas ducimus repudiandae esse possimus, a maxime sed quod iste minima quis!</p>
-          <div class="container_buttons_developers">
-            <a class="btn_developers" href="#">
-              Curriculum
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="" style="border-radius: 50%; width:200px;">
-        <h3> Richard Myrdal</h3>
-        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae temporibus repellendus eos nemo voluptas ducimus repudiandae esse possimus, a maxime sed quod iste minima quis!</p>
-        <div class="container_buttons_developers">
-          <a class="btn_developers" href="#">
-            Curriculum
-          </a>
-        </div>
-      </div>
-      <div class="box">
-        <img src="https://randomuser.me/api/portraits/men/5.jpg" alt="" style="border-radius: 50%; width:200px;">
-      <h3> Jon Kringeland</h3>
-      <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae temporibus repellendus eos nemo voluptas ducimus repudiandae esse possimus, a maxime sed quod iste minima quis!</p>
-      <div class="container_buttons_developers">
-        <a class="btn_developers" href="#">
-          Curriculum
-        </a>
-      </div>
-    </div>
-    <div class="box">
-        <img src="https://randomuser.me/api/portraits/men/6.jpg" alt="" style="border-radius: 50%; width:200px;">
-      <h3> Carl-Oscar Stroll</h3>
-      <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae temporibus repellendus eos nemo voluptas ducimus repudiandae esse possimus, a maxime sed quod iste minima quis!</p>
-      <div class="container_buttons_developers">
-        <a class="btn_developers" href="#">
-          Curriculum
-        </a>
-      </div>
-    </div>
-    <div class="box">
-        <img src="https://randomuser.me/api/portraits/men/7.jpg" alt="" style="border-radius: 50%; width:200px;">
-      <h3> Martin Akselsen</h3>
-      <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae temporibus repellendus eos nemo voluptas ducimus repudiandae esse possimus, a maxime sed quod iste minima quis!</p>
-      <div class="container_buttons_developers">
-        <a class="btn_developers" href="#">
-            Curriculum
-        </a>
-      </div>
-    </div>
-      </div>
-    </div>
+        {% endfor %}
+        
   </section>
     {% endblock %}
     
