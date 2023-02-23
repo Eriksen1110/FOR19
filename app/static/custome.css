@@ -136,11 +136,18 @@ body {
     background-color: #9bc2be;
     padding: 10px 15px;
     margin: 40px 20px;
+    border-radius: 10px;
 }
 
 .formulas{
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(600px, 1fr));
+}
+
+/* Forms */
+.form-group{
+    padding-top: 1em;
+    justify-content: center !important;
 }
 
 @media(max-width:1400px){
