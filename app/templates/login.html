@@ -12,35 +12,26 @@
     {% set active_page = "home" %}
     {% block content %}
     
-    <section class="section_header_home">
-        <div class="container">
-            <div class="home">
-                <form action="/login" method="POST">
-                    <h3> Login</h3>
-                    <div class="form-group row">
-                        <label for="input-name" id="label1" class="col-sm-2 col-form label">Username</label>
-                        <div class="col-sm-5">
-                            <input type="text" id="username" class="form-control"  value="" name="username" required></input>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="input-name" id="label2" class="col-sm-2 col-form label">Password</label>
-                        <div class="col-sm-5">
-                            <input type="password" id="password" class="form-control" value="" name="password" required ></input>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="input-name" id="label2" class="col-sm-2 col-form label">Login</label>
-                        <div class="col-sm-5">
-                            <input type="submit" value="Log in"> </input>
-                        </div>
-                      </div>
-
-
-                </form>
+    <div class="form_wrapper">
+        <div class="form_container">
+          <div class="title_container">
+            <h2> Login</h2>
+          </div>
+          <div class="row clearfix">
+            <div class="">
+              <form method="post" action="">
+                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                  <input type="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
+                </div>
+                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                  <input type="password" name="password" placeholder="Password" pattern=".{8,}" title="The password must a least be 8 char" required />
+                </div>                     
+                <input class="button" type="submit" value="Log in" />
+              </form>
             </div>
+          </div>
         </div>
-      </section> 
+      </div>
 
     {% endblock %}
     

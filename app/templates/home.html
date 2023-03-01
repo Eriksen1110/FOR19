@@ -20,6 +20,25 @@
         <div class="home">
             <h2 class="text"> Home</h2>
         </div>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+             <div class="alert alert-success">
+                {% for message in messages %}
+                  {{ message }}
+                {% endfor %}
+              </div>
+              <script>
+                  setTimeout(function() {
+                      var flashes = document.querySelector('.alert');
+                      if (flashes) {
+                          flashes.parentNode.removeChild(flashes);
+                      }
+                  }, 5000);
+              </script>
+          {% endif %}
+      {% endwith %}
+
+    
         <div class="home">
             <div class="header_home">
                 <div class="box">
@@ -54,9 +73,7 @@
           ('Sara', '8', 'women'), 
           ('Richard', '7', 'men'),
           ('Per Ole', '10', 'men'),
-          ('Jon', '4', 'men'),
-          ('Carl-Oscar', '3', 'men'),
-          ('Martin', '1', 'men')] 
+          ('Jon', '4', 'men')]
           -%}
 
         {% for name, n, gender in dev_team %}

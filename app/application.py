@@ -1,9 +1,10 @@
 import flask 
-from flask import request
+from flask import request, flash 
 import random
 
 application = flask.Flask(__name__)
 
+application.secret_key = "80e49e4bea0c03d64cc40d37f11535b85e93880b43c8c053"
 DEV_PORT = 5000
 PRO_PORT = 80
 
@@ -31,13 +32,21 @@ def carbon_application():
 def login():
     if request.method == "POST":
         data = request.form
-        print(f"Username: {data['username']}")
+        print(f"Username: {data['email']}")
         print(f"Username: {data['password']}")
-
+        flash("Congratz, you have successed to login")
+        return flask.redirect("/")
     return flask.render_template('login.html')
 
 @application.route("/register", methods=["POST", "GET"])
 def register():
+    if request.method == "POST":
+        data = request.form
+        print(f"First Name: {data['f:name']}")
+        print(f"Last Name: {data['l:name']}")
+        print(f"Email: {data['email']}")
+        print(f"Password: {data['password']}")
+
     return flask.render_template('register.html')
 
 
