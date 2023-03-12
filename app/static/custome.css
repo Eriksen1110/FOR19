@@ -20,27 +20,27 @@ body {
     /* negative value of footer height */
     height: 72px;
     clear: both;
-    background-color: #9bc2be !important;
-    color: #f37979;
+    background-color: #2a4359 !important;
+    color: #FFFFFF;
     font-size: 18px !important;
-    font-weight: bold !important;
+
 }
 
 
 /* navbar settings */
 .bg-primary {
     /*background-color: #601430!important; */
-    background-color: #9bc2be!important;
+    background-color: #798F9B!important;
 }
 
 .nav-link {
     font-size: 22px !important;
-    font-weight: bold !important;
-    color: #f37979 !important;
+    color: #FFFFFF !important;
 }
 .navbar {
     padding-bottom: 0 !important;
     padding-top: 0 !important;
+    margin-bottom: 15px;
 }
 .navbar-brand{
     padding-bottom: 0 !important;
@@ -64,14 +64,14 @@ body {
 
 /* Section header_home */
 .section_header_home {
-    background-color: #9bb2c2;
+    background-color: #C0D1DA;
 }
 .header_home{
     display: flex;
 }
 .header_home .box {
     flex: 1;
-    color: #fff;
+   
     margin: 20px 10px;  
     padding: 15px 10px;
     text-align: center;
@@ -81,7 +81,7 @@ body {
 
 .home .text{
     text-align: center;
-    color: #FFFFFF;
+ 
     margin-bottom: -15px;
 }
 
@@ -93,6 +93,19 @@ body {
 }
 .text_align_left{
     text-align: left;
+}
+
+.box .container_buttons_header_home .btn {
+    background-color: #9bb2c2;
+    color: black;
+    outline: #1f679a;
+    border: #2072ac;
+    margin: 10px;
+    box-shadow: 0.5px 0.5px 0.5px grey;
+}
+
+.box .container_buttons_header_home .btn:hover{
+    background-color: #0c67a4;
 }
 
 /* Developers */
@@ -124,6 +137,12 @@ body {
     padding: 5px;
     text-decoration: none;
     color: black;
+    margin-bottom: 15px;
+}
+
+.btn_developers:hover{
+    background-color: #0c67a4;
+    color: black !important;
 }
 
 /* Formulas */
@@ -143,6 +162,18 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(600px, 1fr));
 }
+
+.header_home .box .btn {
+    background-color: #9bb2c2;
+    border-color: #9bb2c2;
+    color: black;
+    box-shadow: 0.5px 0.5px 0.5px grey;
+}
+.header_home .box .btn:hover{
+    background-color: #0c67a4;
+    color: black !important;
+}
+
 
 /* Forms */
 .form-group{
