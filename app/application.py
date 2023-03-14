@@ -1,6 +1,7 @@
 import flask 
 from flask import request, flash 
 import random
+from db import User, Users
 
 application = flask.Flask(__name__)
 
@@ -13,6 +14,8 @@ PRO_HOST = "0.0.0.0"
 
 #mode = "production"
 mode = "development"
+
+users = [ ]
 
 @application.route("/", methods=['POST', 'GET'])
 def home():
@@ -34,8 +37,14 @@ def login():
         data = request.form
         print(f"Username: {data['email']}")
         print(f"Username: {data['password']}")
-        flash("Congratz, you have successed to login")
-        return flask.redirect("/")
+
+        if users.valid_login(data["email"], data["password"]):    
+            flash("Congratz, your login was successful!")
+            flash(f'Welcome to our carbone app {users.get_full_name(data["email"])}')
+            return flask.redirect("/")
+        else:
+            flash("Login failed. Please enter correct email and password.")
+            return flask.redirect('login')
     return flask.render_template('login.html')
 
 @application.route("/register", methods=["POST", "GET"])
@@ -46,6 +55,8 @@ def register():
         print(f"Last Name: {data['l:name']}")
         print(f"Email: {data['email']}")
         print(f"Password: {data['password']}")
+        new_user = User(data["f:name"], data["l:name"], data['email'], data['password'])
+        users.add(new_user)
 
     return flask.render_template('register.html')
 
@@ -56,6 +67,7 @@ def error(e):
     return flask.render_template('404.html') 
 
 if __name__ == "__main__":
+    users = Users()
     if mode == "production":
         application.run(port=PRO_HOST, host=DEV_HOST)
     else:

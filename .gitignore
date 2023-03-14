@@ -2,3 +2,5 @@
 venv
 venv/
 Ch5 Carbon App/
+app/__pycache__
+

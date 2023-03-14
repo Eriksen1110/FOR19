@@ -40,7 +40,7 @@ body {
 .navbar {
     padding-bottom: 0 !important;
     padding-top: 0 !important;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 .navbar-brand{
     padding-bottom: 0 !important;
@@ -94,6 +94,19 @@ body {
 .text_align_left{
     text-align: left;
 }
+.box:nth-of-type(2) {
+    position: relative;
+}
+.container_buttons_header_home {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+}
 
 .box .container_buttons_header_home .btn {
     background-color: #9bb2c2;
@@ -107,6 +120,9 @@ body {
 .box .container_buttons_header_home .btn:hover{
     background-color: #0c67a4;
 }
+
+
+
 
 /* Developers */
 .section_developers {
@@ -138,6 +154,7 @@ body {
     text-decoration: none;
     color: black;
     margin-bottom: 15px;
+    box-shadow: 1px 1px 1px 1px black;
 }
 
 .btn_developers:hover{
@@ -276,27 +293,36 @@ body {
 
 input[type="submit"] {
     background: #f5ba1a;
-		height: 35px;
-		line-height: 35px;
-		width: 100%;
-		border: none;
-		outline: none;
-		cursor: pointer;
-		color: #fff;
-		font-size: 1.1em;
-		margin-bottom: 10px;
-        border-radius: 10px;
-		-webkit-transition: all 0.30s ease-in-out;
-		-moz-transition: all 0.30s ease-in-out;
-		-ms-transition: all 0.30s ease-in-out;
-		transition: all 0.30s ease-in-out;
+    height: 35px;
+    line-height: 35px;
+    width: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    transition: all 0.30s ease-in-out;
 }
 input[type="submit"]:hover{
     background: darken(#f5ba1a, 7%);
-
 }
+
 
 .col_half {
     width: 50%;
     float: left;
+}
+
+.alert {
+    width: 50%;
+    margin: auto;
+}
+
+#password_re_div {
+    margin-bottom: 3px !important;
 }
