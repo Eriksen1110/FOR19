@@ -26,6 +26,7 @@ class Users:
         for user in self.users:
             if user.email == email and user.password == password:
                 return True
+        return False
     
     def get_full_name(self, email):
         for user in self.users:

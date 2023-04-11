@@ -1,7 +1,11 @@
 import flask 
-from flask import request, flash 
-import random
-from db import User, Users
+from flask import request, flash, session 
+#from db import User, Users
+import os
+from models import db, User, Transport
+from flask_bcrypt import Bcrypt
+import flask_login
+from flask_session import Session
 
 application = flask.Flask(__name__)
 
@@ -15,13 +19,26 @@ PRO_HOST = "0.0.0.0"
 #mode = "production"
 mode = "development"
 
-users = [ ]
+application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root@127.0.0.1/for19' 
+
+application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+application.config['SQLALCHEMY_POOL_SIZE'] = 50
+application.config['SQLALCHEMY_MAX_OVERFLOW'] = 50
+application.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False # No debug intercepts
+
+
+login_manager = flask_login.LoginManager()
+login_manager.init_app(application)
+login_manager.session_protection = None
+
+
+with application.app_context():
+    db.init_app(application)
+    db.create_all()
 
 @application.route("/", methods=['POST', 'GET'])
 def home():
-    names = ['Christian', 'Richard', 'Sara', "Carl-Oscar", "Jon", 'Vilde', "Martin"]
-    name = names[round(random.randint(0,6))]
-    return flask.render_template('home.html', name=name)
+    return flask.render_template('home.html')
 
 @application.route("/methodology")
 def methodology():
@@ -31,43 +48,57 @@ def methodology():
 def carbon_application():
     return flask.render_template("carbon_app.html")
 
+#Login/User managment
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.filter(User.id == user_id).first()
+
 @application.route("/login", methods=["POST", "GET"])
 def login():
     if request.method == "POST":
         data = request.form
         print(f"Username: {data['email']}")
-        print(f"Username: {data['password']}")
+        print(f"Password: {data['password']}")
 
-        if users.valid_login(data["email"], data["password"]):    
+        if User.valid_login(data["email"], data["password"]) != None:    
+            flask_login.login_user(User.valid_login(data["email"], data["password"]))
             flash("Congratz, your login was successful!")
-            flash(f'Welcome to our carbone app {users.get_full_name(data["email"])}')
+            flash(f'Welcome to our carbone app {flask_login.current_user.username}')
+            session['logged_in'] = True
             return flask.redirect("/")
         else:
             flash("Login failed. Please enter correct email and password.")
-            return flask.redirect('login')
-    return flask.render_template('login.html')
+            return flask.redirect('/login')
+    else:
+        return flask.render_template('login.html')
 
 @application.route("/register", methods=["POST", "GET"])
 def register():
     if request.method == "POST":
         data = request.form
-        print(f"First Name: {data['f:name']}")
-        print(f"Last Name: {data['l:name']}")
-        print(f"Email: {data['email']}")
-        print(f"Password: {data['password']}")
-        new_user = User(data["f:name"], data["l:name"], data['email'], data['password'])
-        users.add(new_user)
-
+        new_user = User((data["f:name"] +" " + data["l:name"]), data['email'], data['password'])
+        db.session.add(new_user)
+        db.session.commit()
+        flask_login.login_user(User.valid_login(data["email"], data["password"]))
+        flash("Congratz, your registration was successful!")
+        flash(f'Welcome to our carbone app {flask_login.current_user.username}')
+        session['logged_in'] = True
+        return flask.redirect("/")
     return flask.render_template('register.html')
 
-
+@application.route("/logout",  methods=['POST', 'GET'])
+def logout():
+    flask_login.logout_user()
+    session.clear()
+    flash("You are loged out!")
+    return flask.redirect("/")
 
 @application.errorhandler(404)
 def error(e):
     return flask.render_template('404.html') 
 
 if __name__ == "__main__":
-    users = Users()
     if mode == "production":
         application.run(port=PRO_HOST, host=DEV_HOST)
     else:

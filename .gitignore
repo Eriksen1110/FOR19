@@ -3,4 +3,6 @@ venv
 venv/
 Ch5 Carbon App/
 app/__pycache__
+flask_session
+/flask_session
 
